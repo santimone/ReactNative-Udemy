@@ -79,7 +79,7 @@ export const Login = () => {
 				</>
 			) : (
 				<>
-					s<div className="alert alert-danger">No autenticado</div>
+					<div className="alert alert-danger">No autenticado</div>
 					<button className="btn btn-primary" onClick={login}>
 						Login
 					</button>
