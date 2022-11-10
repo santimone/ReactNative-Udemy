@@ -1,4 +1,4 @@
-package com.navegacion.newarchitecture;
+package com.awesometsproject.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.navegacion.BuildConfig;
-import com.navegacion.newarchitecture.components.MainComponentsRegistry;
-import com.navegacion.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.awesometsproject.BuildConfig;
+import com.awesometsproject.newarchitecture.components.MainComponentsRegistry;
+import com.awesometsproject.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
