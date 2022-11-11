@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
 		backgroundColor: '#9B9B9B',
 		borderRadius: 100,
 		justifyContent: 'center',
-		marginHorizontal: 10,
+		marginHorizontal: 5,
 	},
 	botonTexto: {
 		textAlign: 'center',

@@ -3,6 +3,7 @@ import { Pagina1Screen } from '../screens/Pagina1Screen';
 import { Pagina2Screen } from '../screens/Pagina2Screen';
 import { Pagina3Screen } from '../screens/Pagina3Screen';
 import { PersonaScreen } from '../screens/PersonaScreen';
+import { colors } from '../theme/appTheme';
 
 export type RootStackParams = {
 	Pagina1Screen: undefined;
@@ -23,7 +24,7 @@ export const StackNavigator = () => {
 					shadowColor: 'transparent',
 				},
 				cardStyle: {
-					backgroundColor: '#121624',
+					backgroundColor: colors.primary,
 				},
 			}}
 		>

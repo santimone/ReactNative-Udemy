@@ -8,7 +8,7 @@ export const SettingsScreen = () => {
 
 	return (
 		<View style={{ ...styles.globalMargin, marginTop: insets.top }}>
-			<Text style={styles.title}>Settings Screen</Text>
+			<Text style={{ ...styles.title, color: 'black' }}>Settings Screen</Text>
 		</View>
 	);
 };

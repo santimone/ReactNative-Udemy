@@ -79,8 +79,11 @@ export const useCalculadora = () => {
 	};
 
 	const btnDividir = () => {
-		cambiarNumPorAnterior();
-		ultimaOperacion.current = Operadores.dividir;
+		if (numeroAnterior === '0') {
+			cambiarNumPorAnterior();
+			ultimaOperacion.current = Operadores.dividir;
+		} else {
+		}
 	};
 
 	const btnMultiplicar = () => {
