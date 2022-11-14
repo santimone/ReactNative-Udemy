@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Text, View } from 'react-native';
-import { styles } from '../theme/appTheme';
+import { styles, colors } from '../theme/appTheme';
 import { TouchableOpacity } from 'react-native';
 import { RootStackParams } from '../navigator/StackNavigator';
 import { useEffect } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 
 // interface Props extends StackScreenProps<RootStackParams, 'Pagina1Screen'> {}
@@ -12,7 +13,11 @@ interface Props extends DrawerScreenProps<RootStackParams, 'Pagina1Screen'> {}
 export const Pagina1Screen = ({ navigation }: Props) => {
 	useEffect(() => {
 		navigation.setOptions({
-			headerLeft: () => <Button title="Menú" onPress={() => navigation.toggleDrawer()} />,
+			headerLeft: () => (
+				<TouchableOpacity style={{ ...styles.menuBoton, marginLeft: 15 }} onPress={() => navigation.toggleDrawer()}>
+					<Icon name="menu-outline" size={25} color={colors.primary} />
+				</TouchableOpacity>
+			),
 		});
 	}, []);
 
@@ -32,6 +37,7 @@ export const Pagina1Screen = ({ navigation }: Props) => {
 						})
 					}
 				>
+					<Icon name="person-circle-outline" size={25} color={colors.primary} />
 					<Text style={styles.botonGrandeTexto}>Pedro</Text>
 				</TouchableOpacity>
 
@@ -44,6 +50,7 @@ export const Pagina1Screen = ({ navigation }: Props) => {
 						})
 					}
 				>
+					<Icon name="person-circle-outline" size={25} color={colors.primary} />
 					<Text style={styles.botonGrandeTexto}>Maria</Text>
 				</TouchableOpacity>
 			</View>
