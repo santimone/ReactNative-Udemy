@@ -19,7 +19,7 @@ export const MovieDetails = ({ movieFull, cast }: Props) => {
 			{/* Detalles */}
 			<View style={{ marginHorizontal: 20 }}>
 				<View style={{ flexDirection: 'row', marginLeft: 5 }}>
-					<Icon name="star-outline" color="grey" size={16} />
+					<Icon name="star" color="white" size={16} />
 					<Text style={{ color: 'white', marginLeft: 5 }}>{movieFull.vote_average}</Text>
 				</View>
 				<Text style={{ color: 'white', marginLeft: 5 }}>
