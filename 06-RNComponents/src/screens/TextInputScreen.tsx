@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import {
 	TextInput,
 	View,
@@ -15,8 +15,13 @@ import { styles } from '../theme/appTheme';
 import { Text } from 'react-native';
 import { CustomSwitch } from '../components/CustomSwitch';
 import { useForm } from '../hooks/useForm';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const TextInputScreen = () => {
+	const {
+		theme: { colors },
+	} = useContext(ThemeContext);
+
 	const { handleChange, form, isSuscribed } = useForm({
 		name: '',
 		email: '',
@@ -32,15 +37,17 @@ export const TextInputScreen = () => {
 						<HeaderTitle title="TextInputs" />
 
 						<TextInput
-							style={stylesInput.inputStyle}
+							style={{ ...stylesInput.inputStyle, color: colors.text }}
 							placeholder="ingrese su nombre"
+							placeholderTextColor={colors.text}
 							autoCorrect={false}
 							autoCapitalize="words"
 							onChangeText={(value) => handleChange(value, 'name')}
 						/>
 						<TextInput
-							style={stylesInput.inputStyle}
+							style={{ ...stylesInput.inputStyle, color: colors.text }}
 							placeholder="ingrese su email"
+							placeholderTextColor={colors.text}
 							autoCorrect={false}
 							autoCapitalize="none"
 							onChangeText={(value) => handleChange(value, 'email')}
@@ -48,7 +55,7 @@ export const TextInputScreen = () => {
 						/>
 
 						<View style={{ flexDirection: 'row' }}>
-							<Text style={styles.title}>Suscribirme</Text>
+							<Text style={{ ...styles.title, color: colors.text }}>Suscribirme</Text>
 							<View style={{ flex: 1 }} />
 							<CustomSwitch
 								isOn={isSuscribed}
@@ -56,8 +63,9 @@ export const TextInputScreen = () => {
 							/>
 						</View>
 						<TextInput
-							style={stylesInput.inputStyle}
+							style={{ ...stylesInput.inputStyle, color: colors.text }}
 							placeholder="ingrese su telefono"
+							placeholderTextColor={colors.text}
 							onChangeText={(value) => handleChange(value, 'phone')}
 							keyboardType="phone-pad"
 						/>
