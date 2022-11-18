@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ActivityIndicator, Text, FlatList, Dimensions, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -6,16 +6,38 @@ import { styles } from '../theme/AppTheme';
 import { SearchInput } from '../components/SearchInput';
 import { usePokemonSearch } from '../hooks/usePokemonSearch';
 import { PokemonCard } from '../components/PokemonCard';
+import { SimplePokemon } from '../interfaces/pokemonInterfaces';
+import { useEffect } from 'react';
 
 export const SearchScreen = () => {
 	const { top } = useSafeAreaInsets();
 	const { isFetching, simplePokemonList } = usePokemonSearch();
+	const [filteredPokemons, setFilteredPokemons] = useState<SimplePokemon[]>([]);
+	const [term, setTerm] = useState('');
 
 	const width = Dimensions.get('window').width;
+
+	useEffect(() => {
+		if (term.length === 0) {
+			return setFilteredPokemons([]);
+		}
+
+		if (isNaN(Number(term))) {
+			setFilteredPokemons(
+				simplePokemonList.filter((poke) =>
+					poke.name.toLowerCase().includes(term.toLowerCase())
+				)
+			);
+		} else {
+			const pokeById = simplePokemonList.find((poke) => poke.id === term);
+			setFilteredPokemons(pokeById ? [pokeById] : []);
+		}
+	}, [term]);
 
 	return (
 		<View style={{ flex: 1, marginTop: top + 10, alignItems: 'center' }}>
 			<SearchInput
+				onDebounce={(value) => setTerm(value)}
 				style={{
 					position: 'absolute',
 					zIndex: 999,
@@ -28,7 +50,7 @@ export const SearchScreen = () => {
 			) : (
 				<FlatList
 					//Data Render
-					data={simplePokemonList}
+					data={filteredPokemons}
 					keyExtractor={(pokemon) => pokemon.id}
 					renderItem={({ item }) => <PokemonCard pokemon={item} />}
 					//Design
@@ -46,7 +68,7 @@ export const SearchScreen = () => {
 								paddingBottom: 10,
 							}}
 						>
-							Pokedex
+							{term}
 						</Text>
 					}
 				/>
